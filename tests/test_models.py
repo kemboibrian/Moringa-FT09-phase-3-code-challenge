@@ -9,11 +9,13 @@ class TestModels(unittest.TestCase):
         self.assertEqual(author.name, "John Doe")
 
     def test_article_creation(self):
-        article = Article(1, "Test Title", "Test Content", 1, 1)
+        author = Author(1, "John Doe")  # Create an Author instance
+        magazine = Magazine(1, "Tech Weekly", "Technology")  # Create a Magazine instance
+        article = Article(1, "Test Title", "Test Content", author.id, magazine.id)  # Pass Author and Magazine instances
         self.assertEqual(article.title, "Test Title")
 
     def test_magazine_creation(self):
-        magazine = Magazine(1, "Tech Weekly")
+        magazine = Magazine(1, "Tech Weekly", "Technology")
         self.assertEqual(magazine.name, "Tech Weekly")
 
 if __name__ == "__main__":
