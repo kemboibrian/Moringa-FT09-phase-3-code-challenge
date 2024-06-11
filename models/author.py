@@ -1,5 +1,4 @@
-
-from models.article import Article
+from database import connection
 
 class Author:
     def __init__(self, id, name):
@@ -60,3 +59,7 @@ class Author:
 
     def __repr__(self):
         return f'<Author {self.name}>'
+
+# Move the Article import to the end
+from models.article import Article
+from models.magazine import Magazine

@@ -1,4 +1,4 @@
-
+from database import connection
 
 class Article:
     def __init__(self, id, title, content, author_id, magazine_id):
@@ -43,18 +43,6 @@ class Article:
     def __repr__(self):
         return f'<Article {self.title}>'
 
-    @property
-    def author(self):
-        from models.author import Author
-        # Assuming the relationship between Article and Author is defined in the database
-        query = """
-            SELECT a.*
-            FROM authors a
-            JOIN articles art ON a.id = art.author_id
-            WHERE art.id = ?
-        """
-        with connection.cursor() as cursor:
-            cursor.execute(query, (self.id,))
-            author_data = cursor.fetchone()
-            author = Author(*author_data)
-        return author
+
+from models.author import Author
+from models.magazine import Magazine

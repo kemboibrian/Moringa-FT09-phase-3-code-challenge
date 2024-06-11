@@ -31,3 +31,23 @@ def create_tables():
 
     conn.commit()
     conn.close()
+
+def insert_sample_data():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    # Insert sample data for authors
+    cursor.execute("INSERT INTO authors (name) VALUES ('John Doe')")
+    cursor.execute("INSERT INTO authors (name) VALUES ('Jane Smith')")
+    
+    # Insert sample data for magazines
+    cursor.execute("INSERT INTO magazines (name, category) VALUES ('Tech Weekly', 'Technology')")
+    cursor.execute("INSERT INTO magazines (name, category) VALUES ('Fashion Now', 'Fashion')")
+
+    conn.commit()
+    conn.close()
+
+# Run the functions to create tables and insert sample data
+if __name__ == "__main__":
+    create_tables()
+    insert_sample_data()
